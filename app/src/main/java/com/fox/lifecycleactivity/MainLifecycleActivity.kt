@@ -1,13 +1,11 @@
 package com.fox.lifecycleactivity
 
 import android.Manifest
-import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.databinding.DataBindingUtil
 import com.fox.lifecycleactivity.databinding.ActivityMainLifecycleBinding
 
 class MainLifecycleActivity : AppCompatActivity() {
@@ -15,6 +13,7 @@ class MainLifecycleActivity : AppCompatActivity() {
 
 
         lateinit var binding : ActivityMainLifecycleBinding
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,8 +24,13 @@ class MainLifecycleActivity : AppCompatActivity() {
 
         binding = ActivityMainLifecycleBinding.inflate(layoutInflater).also { setContentView(it.root) }
 
-        binding.showAnotherActivityButton.setOnClickListener {
-            startActivity(Intent(this, SecondaryLifecycleActivity::class.java))
+        binding.showAnotherActivityButton.setOnClickListener() {
+//            supportFragmentManager.findFragmentById(R.layout.fragment_secondary_activity)
+//                supportFragmentManager.beginTransaction().replace(R.layout.fragment_secondary_activity, SecondaryActivity()).commit()
+//            startActivity(Intent(this, SecondaryActivity::class.java))
+//            supportFragmentManager.beginTransaction().show(SecondaryActivity())
+            val intent = Intent(this, ThirdActivity::class.java)
+            startActivity(intent)
         }
 
         binding.showTransparentActivityButton.setOnClickListener {

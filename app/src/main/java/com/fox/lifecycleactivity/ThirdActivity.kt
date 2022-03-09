@@ -1,24 +1,20 @@
 package com.fox.lifecycleactivity
 
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.fox.lifecycleactivity.databinding.ActivitySecondaryBinding
+import com.fox.lifecycleactivity.databinding.ActivityThirdBinding
 
-class SecondaryLifecycleActivity : AppCompatActivity() {
+class ThirdActivity : AppCompatActivity() {
 
-    lateinit var binding : ActivitySecondaryBinding
+    lateinit var binding : ActivityThirdBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d(TAG, "OnCreate, savedState = $savedInstanceState")
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_third)
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_secondary)
-
-//        binding = ActivitySecondaryBinding.inflate(layoutInflater).also { setContentView(it.root) }
-
-
+        Log.d(MainLifecycleActivity.TAG, "OnCreate, savedState = $savedInstanceState")
     }
 
     override fun onStart() {
@@ -52,6 +48,6 @@ class SecondaryLifecycleActivity : AppCompatActivity() {
     }
 
     companion object {
-        @JvmStatic val TAG = SecondaryLifecycleActivity::class.simpleName
+        @JvmStatic val TAG = SecondaryActivity::class.simpleName
     }
 }

@@ -3,4 +3,6 @@
     <string name="button1">Show Another Activity</string>
     <string name="button2">Show Transparent Activity</string>
     <string name="button3">Minimize the App</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
