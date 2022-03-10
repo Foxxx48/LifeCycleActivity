@@ -20,7 +20,7 @@ class SecondaryActivity : Fragment(), View.OnClickListener {
     ): View? {
         Log.d(SecondaryActivity.TAG, "OnCreate, savedState = $savedInstanceState")
 
-        binding = DataBindingUtil.inflate(inflater, R.layout.activity_secondary, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_secondary_activity, container, false)
 
         return binding?.root
     }

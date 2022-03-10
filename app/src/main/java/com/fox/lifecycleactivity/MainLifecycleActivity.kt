@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.fragment.app.Fragment
 import com.fox.lifecycleactivity.databinding.ActivityMainLifecycleBinding
 
 class MainLifecycleActivity : AppCompatActivity() {
@@ -20,7 +21,7 @@ class MainLifecycleActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         Log.d(TAG, "OnCreate, savedState = $savedInstanceState")
 
-//        binding = DataBindingUtil.setContentView(this, R.layout.activity_main_lifecycle)
+
 
         binding = ActivityMainLifecycleBinding.inflate(layoutInflater).also { setContentView(it.root) }
 
@@ -34,12 +35,23 @@ class MainLifecycleActivity : AppCompatActivity() {
         }
 
         binding.showTransparentActivityButton.setOnClickListener {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 1)
+//            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 1)
+            launchFragment(SecondaryActivity())
         }
 
         binding.minimizeTheAppButton.setOnClickListener {
             moveTaskToBack(false)
         }
+
+
+    }
+
+    private fun launchFragment (fragment: Fragment) {
+        supportFragmentManager
+            .beginTransaction()
+            .addToBackStack(null)
+            .replace(R.id.fragmentContainer, fragment)
+            .commit()
     }
 
     override fun onStart() {
